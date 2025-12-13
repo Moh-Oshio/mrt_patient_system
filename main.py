@@ -37,3 +37,32 @@ class Reception:
             file.write(f'{new_num}\n')
 
         return new_num
+
+    def create_card(self):
+        file_no = card_nums[-1]
+
+        name = input("Enter patient's name: \n\n").upper()
+        sex = input("Male or Female? \n\n").title()
+        dob = input("\nEnter date of birth in the format: dd/mm/yyyy: \n\n")
+        dob_date = datetime.strptime(dob, "%d/%m/%Y").date()
+
+        today = date.today()
+        age = today.year - dob_date.year
+
+        if (today.month, today.day) < (dob_date.month, dob_date.day):
+            age -= 1
+
+        address = input("\nEnter address: \n\n")
+        phone_number = input("\nEnter phone number: \n\n")
+
+        file_path = os.path.join(self.folder, f"{file_no}.txt")
+
+        with open(file_path, 'a') as file:
+            file.write(
+                f"--- PATIENT CARD CREATED ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')}) ---\n")
+            file.write(f'File Number: {file_no}\n')
+            file.write(f'Name of Patient: {name}\n')
+            file.write(f'Sex: {sex}\n')
+            file.write(f'Age: {age} years\n')
+            file.write(f'Address: {address}\n')
+            file.write(f'Phone: {phone_number}\n')
