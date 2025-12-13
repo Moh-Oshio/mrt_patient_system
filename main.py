@@ -66,3 +66,16 @@ class Reception:
             file.write(f'Age: {age} years\n')
             file.write(f'Address: {address}\n')
             file.write(f'Phone: {phone_number}\n')
+
+    def check_patient_file(self, card_number):
+        file_path = os.path.join(self.folder, f"{card_number}.txt")
+
+        if os.path.exists(file_path):
+            print(f"\n---- Patient Record ({card_number}) ----\n")
+            with open(file_path, 'r') as file:
+                print(file.read())
+            print("------------------------\n")
+            return True
+        else:
+            print(f"\nPatient file does not exist.\n")
+            return False
