@@ -79,3 +79,27 @@ class Reception:
         else:
             print(f"\nPatient file does not exist.\n")
             return False
+
+    def vital_signs(self, card_no):
+        file_path = os.path.join(self.folder, f"{card_no}.txt")
+
+        if not os.path.exists(file_path):
+            print("\nPatient file not found.")
+            return
+
+        print("\nEnter vital signs:\n")
+        temp = input("Temperature (°C): ")
+        bp = input("Blood Pressure (mmHg): ")
+        pulse = input("Pulse (bpm): ")
+
+        with open(file_path, 'a') as file:
+            file.write(
+                f"\n--- VITAL SIGNS ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')}) ---\n")
+            file.write(f"Temperature: {temp}°C\n")
+            file.write(f"Blood Pressure: {bp}mmHg\n")
+            file.write(f"Pulse: {pulse} bpm\n")
+
+        print("\nVital signs recorded successfully!\n")
+
+    def all_records(self):
+        return card_nums
