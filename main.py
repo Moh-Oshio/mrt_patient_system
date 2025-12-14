@@ -102,4 +102,27 @@ class Reception:
         return card_nums
 
 
-a = Re
+class Doctor:
+    folder = "patients"
+
+    def enter_report(self, card_no):
+        file_path = os.path.join(self.folser, f"{card_no}.txt")
+
+        if not os.path.exists(file_path):
+            print("\nPatient file not found")
+            return
+
+        print("\nEnter doctor's report:\n")
+        diagnosis = input("Diagnosis: ")
+        prescription = input("Prescription: ")
+        notes = input("Additional Notes: ")
+
+        # Appends the doctor's report to the patient file.
+        with open(file_path, 'a') as file:
+            file.write(
+                f"\n--- DOCTOR'S REPORT ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')}) ---\n")
+            file.write(f"Diagnosis: {diagnosis}\n")
+            file.write(f"Prescription: {prescription}\n")
+            file.write(f"Notes: {notes}\n")
+
+        print("\nDoctor's report added successfully!\n")
