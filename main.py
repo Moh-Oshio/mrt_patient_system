@@ -5,12 +5,9 @@ import os
 # Storage for running card numbers
 card_nums = []
 
-# Implementation of the Reception Class.
-# This class helps the Reception store the information of a new patient and record time of visit for the new patient.
-
 
 class Reception:
-    """Initializes the system by reading existing file numbers and creating the patient directory"""
+    """This class helps the Reception section store information relevant to a patient such as name, address, age, phone number etc. It also provides methods for creating anew card, accessing a patient's card and recording vital signs """
 
     def __init__(self):
         try:
