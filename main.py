@@ -100,3 +100,6 @@ class Reception:
 
     def all_records(self):
         return card_nums
+
+
+a = Re
