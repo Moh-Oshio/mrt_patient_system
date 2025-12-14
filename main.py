@@ -103,6 +103,7 @@ class Reception:
 
 
 class Doctor:
+    """This class helps the Doctor record observations of the patient, diagnosis, prescription and additional notes."""
     folder = "patients"
 
     def enter_report(self, card_no):
@@ -124,5 +125,3 @@ class Doctor:
             file.write(f"Diagnosis: {diagnosis}\n")
             file.write(f"Prescription: {prescription}\n")
             file.write(f"Notes: {notes}\n")
-
-        print("\nDoctor's report added successfully!\n")
