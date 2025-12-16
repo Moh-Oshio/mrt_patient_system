@@ -145,3 +145,30 @@ class Doctor:
         else:
             print(f"\nPatient file does not exist.\n")
             return False
+
+
+class Nurse:
+    # Class variable pointing to the patient data folder.
+    folder = "patients"
+
+    # Collects and appends nurse's observations and care notes to a patient file.
+    def enter_notes(self, card_no):
+        file_path = os.path.join(self.folder, f"{card_no}.txt")
+
+        if not os.path.exists(file_path):
+            print("\nPatient file not found.")
+            return
+
+        print("\nEnter nurse's notes:\n")
+        observations = input("Observations: ")
+        care = input("Care given: ")
+
+        # Appends the nurse's notes to the patient file.
+        with open(file_path, "a") as file:
+            file.write(
+                f"\n--- NURSE'S NOTES ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')}) ---\n"
+            )
+            file.write(f"Observations: {observations}\n")
+            file.write(f"Care: {care}\n")
+
+        print("\nNurse's notes added successfully!\n")
