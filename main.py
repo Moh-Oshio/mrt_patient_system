@@ -7,11 +7,11 @@ card_nums = []
 
 
 class Reception:
-    """This class helps the Reception section store information relevant to a patient such as name, address, age, phone number etc. It also provides methods for creating anew card, accessing a patient's card and recording vital signs """
+    """This class helps the Reception section store information relevant to a patient such as name, address, age, phone number etc. It also provides methods for creating anew card, accessing a patient's card and recording vital signs"""
 
     def __init__(self):
         try:
-            with open('file_numbers.txt', 'r') as file:
+            with open("file_numbers.txt", "r") as file:
                 for line in file:
                     number = line.strip()
                     if number and number not in card_nums:
@@ -19,19 +19,19 @@ class Reception:
         except FileNotFoundError:
             pass
 
-        self.folder = 'patients'
+        self.folder = "patients"
 
         os.makedirs(self.folder, exist_ok=True)
 
     def num_gen(self):
         rand_num = str(randint(100, 5000))
         def_len = 6
-        new_num = (((def_len - len(rand_num)) * '0') + rand_num)
+        new_num = ((def_len - len(rand_num)) * "0") + rand_num
 
         card_nums.append(new_num)
 
-        with open('file_numbers.txt', 'a') as file:
-            file.write(f'{new_num}\n')
+        with open("file_numbers.txt", "a") as file:
+            file.write(f"{new_num}\n")
 
         return new_num
 
@@ -54,22 +54,23 @@ class Reception:
 
         file_path = os.path.join(self.folder, f"{file_no}.txt")
 
-        with open(file_path, 'a') as file:
+        with open(file_path, "a") as file:
             file.write(
-                f"--- PATIENT CARD CREATED ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')}) ---\n")
-            file.write(f'File Number: {file_no}\n')
-            file.write(f'Name of Patient: {name}\n')
-            file.write(f'Sex: {sex}\n')
-            file.write(f'Age: {age} years\n')
-            file.write(f'Address: {address}\n')
-            file.write(f'Phone: {phone_number}\n')
+                f"--- PATIENT CARD CREATED ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')}) ---\n"
+            )
+            file.write(f"File Number: {file_no}\n")
+            file.write(f"Name of Patient: {name}\n")
+            file.write(f"Sex: {sex}\n")
+            file.write(f"Age: {age} years\n")
+            file.write(f"Address: {address}\n")
+            file.write(f"Phone: {phone_number}\n")
 
     def check_patient_file(self, card_number):
         file_path = os.path.join(self.folder, f"{card_number}.txt")
 
         if os.path.exists(file_path):
             print(f"\n---- Patient Record ({card_number}) ----\n")
-            with open(file_path, 'r') as file:
+            with open(file_path, "r") as file:
                 print(file.read())
             print("------------------------\n")
             return True
@@ -89,9 +90,10 @@ class Reception:
         bp = input("Blood Pressure (mmHg): ")
         pulse = input("Pulse (bpm): ")
 
-        with open(file_path, 'a') as file:
+        with open(file_path, "a") as file:
             file.write(
-                f"\n--- VITAL SIGNS ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')}) ---\n")
+                f"\n--- VITAL SIGNS ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')}) ---\n"
+            )
             file.write(f"Temperature: {temp}°C\n")
             file.write(f"Blood Pressure: {bp}mmHg\n")
             file.write(f"Pulse: {pulse} bpm\n")
@@ -104,6 +106,7 @@ class Reception:
 
 class Doctor:
     """This class helps the Doctor record observations of the patient, diagnosis, prescription and additional notes."""
+
     folder = "patients"
 
     def enter_report(self, card_no):
@@ -119,9 +122,26 @@ class Doctor:
         notes = input("Additional Notes: ")
 
         # Appends the doctor's report to the patient file.
-        with open(file_path, 'a') as file:
+        with open(file_path, "a") as file:
             file.write(
-                f"\n--- DOCTOR'S REPORT ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')}) ---\n")
+                f"\n--- DOCTOR'S REPORT ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')}) ---\n"
+            )
             file.write(f"Diagnosis: {diagnosis}\n")
             file.write(f"Prescription: {prescription}\n")
             file.write(f"Notes: {notes}\n")
+
+        print("\nDoctor's report added successfully!\n")
+
+    # Reads and displays the full text content of a patient file (Duplicate of Reception's method).
+    def check_patient_file(self, card_number):
+        file_path = os.path.join(self.folder, f"{card_number}.txt")
+
+        if os.path.exists(file_path):
+            print(f"\n---- Patient Record ({card_number}) ----\n")
+            with open(file_path, "r") as file:
+                print(file.read())
+            print("------------------------\n")
+            return True
+        else:
+            print(f"\nPatient file does not exist.\n")
+            return False
