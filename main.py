@@ -163,7 +163,6 @@ class Nurse:
         observations = input("Observations: ")
         care = input("Care given: ")
 
-        # Appends the nurse's notes to the patient file.
         with open(file_path, "a") as file:
             file.write(
                 f"\n--- NURSE'S NOTES ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')}) ---\n"
@@ -172,3 +171,16 @@ class Nurse:
             file.write(f"Care: {care}\n")
 
         print("\nNurse's notes added successfully!\n")
+
+    def check_patient_file(self, card_number):
+        file_path = os.path.join(self.folder, f"{card_number}.txt")
+
+        if os.path.exists(file_path):
+            print(f"\n---- Patient Record ({card_number}) ----\n")
+            with open(file_path, "r") as file:
+                print(file.read())
+            print("------------------------\n")
+            return True
+        else:
+            print(f"\nPatient file does not exist.\n")
+            return False
