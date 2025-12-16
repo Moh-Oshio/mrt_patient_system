@@ -148,10 +148,10 @@ class Doctor:
 
 
 class Nurse:
-    # Class variable pointing to the patient data folder.
+    """Helps the Nurse record observations and take notes about a patient"""
+
     folder = "patients"
 
-    # Collects and appends nurse's observations and care notes to a patient file.
     def enter_notes(self, card_no):
         file_path = os.path.join(self.folder, f"{card_no}.txt")
 
