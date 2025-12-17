@@ -240,3 +240,29 @@ def main():
                 break
             else:
                 print("\nInvalid choice. Try again.")
+    elif choice == 2:
+        while True:
+            choice = input(
+                "\nDoctor's Menu:\n"
+                "1. Enter Report\n"
+                "2. View Patient File\n"
+                "3. Exit\n\nSelect a number and press Enter\n\n"
+            )
+
+            if choice == "1":
+                # Allows the doctor to enter a new report.
+                doc = Doctor()
+                card_no = input("\nEnter patient's card number: ")
+                doc.enter_report(card_no)
+
+            elif choice == "2":
+                # Allows the doctor to view the patient file.
+                doc = Doctor()
+                card_no = input("\nEnter patient's card number: ")
+                doc.check_patient_file(card_no)
+
+            elif choice == "3":
+                print("\nExiting Doctor's Section...\n")
+                break
+            else:
+                print("\nInvalid choice. Try again.")
