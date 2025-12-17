@@ -266,3 +266,34 @@ def main():
                 break
             else:
                 print("\nInvalid choice. Try again.")
+    elif choice == 3:
+        while True:
+            choice = input(
+                "\nNurse's Menu:\n"
+                "1. Enter Notes\n"
+                "2. View Patient File\n"
+                "3. Exit\n\nSelect a number and press Enter\n\n"
+            )
+
+            if choice == "1":
+                # Allows the nurse to enter new notes.
+                nurse = Nurse()
+                card_no = input("\nEnter patient's card number: ")
+                nurse.enter_notes(card_no)
+
+            elif choice == "2":
+                # Allows the nurse to view the patient file.
+                nurse = Nurse()
+                card_no = input("\nEnter patient's card number: ")
+                nurse.check_patient_file(card_no)
+
+            elif choice == "3":
+                print("\nExiting Nurse's Section...\n")
+                break
+            else:
+                print("\nInvalid choice. Try again.")
+
+
+# Execution block: Ensures main() runs when the script is executed directly.
+if __name__ == "__main__":
+    main()
