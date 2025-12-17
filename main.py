@@ -201,3 +201,42 @@ def main():
     except ValueError:
         print("Invalid input. Please enter a number.")
         return
+
+    if choice == 1:
+        while True:
+            choice = input(
+                "\nReception Menu:\n"
+                "1. Create a new file\n"
+                "2. Enter preliminary records for an existing file\n"
+                "3. View Patient File\n"
+                "4. View all files in Patients folder\n"
+                "5. Exit\n\nSelect a number and press Enter\n\n"
+            )
+
+            if choice == "1":
+                NewPatient = Reception()
+                print(
+                    f"\nCreating new patient's number....\n\nNew patient's number is {NewPatient.num_gen()}\n"
+                )
+                NewPatient.create_card()
+                print()
+
+            elif choice == "2":
+                NewPatient = Reception()
+                card_no = input("\nEnter file number: ")
+                NewPatient.vital_signs(card_no)
+
+            elif choice == "3":
+                NewPatient = Reception()
+                card_no = input("\nEnter file number: ")
+                NewPatient.check_patient_file(card_no)
+
+            elif choice == "4":
+                NewPatient = Reception()
+                print(NewPatient.all_records())
+
+            elif choice == "5":
+                print("\nExiting Records Section...\n")
+                break
+            else:
+                print("\nInvalid choice. Try again.")
