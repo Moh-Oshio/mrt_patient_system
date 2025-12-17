@@ -184,3 +184,20 @@ class Nurse:
         else:
             print(f"\nPatient file does not exist.\n")
             return False
+
+
+def main():
+    print(
+        "Welcome to MRT Patient Recording System. \n\nWhat section would you like to access? \n"
+    )
+
+    # Handles the initial choice of user role (Reception, Doctor, Nurse).
+    try:
+        choice = int(
+            input(
+                "1. Records Section\n2. Doctor's Section\n3. Nurse's Section \n\nSelect a number and press Enter \n\n"
+            )
+        )
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+        return
