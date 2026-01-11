@@ -4,7 +4,7 @@ A Python-based Command Line Interface (CLI) application for hospital management,
 
 # Key Features
 - **Role-Based Access Control:** Distinct workflows for Records, Doctors, and Nurses.
-- **Inheritance-Based Architecture:** Uses a `HospitalStaff` base class to manage shared file operations, adhering to DRY (Don't Repeat Yourself) principles.
+- **Inheritance-Based Architecture:** Uses a `HospitalStaff` base class to manage shared file operations.
 - **Unique ID Generation:** Automatically generates and tracks 6-digit patient card numbers.
 - **Persistent Data Storage:** Saves patient history, vitals, and reports to local text files.
 
