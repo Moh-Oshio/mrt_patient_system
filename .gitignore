@@ -1,5 +1,11 @@
-# Ignore patient data
+# Ignore local patient data files
 patients/
 file_numbers.txt
+
+# Ignore Python's internal cache files
 __pycache__/
 *.pyc
+
+# Ignore environment/IDE settings
+.vscode/
+.idea/
