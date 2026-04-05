@@ -42,13 +42,16 @@ class Reception(HospitalStaff):
             pass
 
     def create_card(self):
-        rand_num = str(randint(100, 5000))
-        def_len = 6
-        file_no = ((def_len - len(rand_num)) * "0") + rand_num
+        while True:
+            rand_num = str(randint(100, 5000))
+            def_len = 6
+            file_no = ((def_len - len(rand_num)) * "0") + rand_num
+            if file_no not in card_nums:
+                break
         
-        card_nums.append(new_num)
+        card_nums.append(file_no)
         with open("file_numbers.txt", "a") as file:
-            file.write(f"{new_num}\n")
+            file.write(f"{file_no}\n")
                
         name = input("Enter patient's name: \n\n").upper()
         sex = input("Male or Female? \n\n").title()
@@ -77,8 +80,6 @@ class Reception(HospitalStaff):
             file.write(f"Age: {age} years\n")
             file.write(f"Address: {address}\n")
             file.write(f"Phone: {phone_number}\n")
-        
-        print(f"\nSuccesfully created file: {file_no}")
 
         return file_no
 
@@ -166,8 +167,8 @@ def main():
             choice = input(
                 "\nReception Menu:\n1. Create a new file\n2. Enter vitals\n3. View Patient File\n4. View all card numbers\n5. Exit\n\nSelect a number: ")
             if choice == "1":
-                print(f"\nNew number: {staff.num_gen()}\n")
-                staff.create_card()
+                new_card = staff.create_card()
+                print(f"\nRegistration Complete. New Card number: {new_card}\n")
             elif choice == "2":
                 staff.vital_signs(input("\nEnter file number: "))
             elif choice == "3":
