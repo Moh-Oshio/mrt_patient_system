@@ -41,14 +41,14 @@ class Reception(HospitalStaff):
         except FileNotFoundError:
             pass
 
-    def num_gen(self):
-        rand_num = str(randint(100, 5000))
-        def_len = 6
-        new_num = ((def_len - len(rand_num)) * "0") + rand_num
-        card_nums.append(new_num)
-        with open("file_numbers.txt", "a") as file:
-            file.write(f"{new_num}\n")
-        return new_num
+    # def num_gen(self):
+    #     rand_num = str(randint(100, 5000))
+    #     def_len = 6
+    #     new_num = ((def_len - len(rand_num)) * "0") + rand_num
+    #     card_nums.append(new_num)
+    #     with open("file_numbers.txt", "a") as file:
+    #         file.write(f"{new_num}\n")
+    #     return new_num
 
     def create_card(self):
         file_no = card_nums[-1]
