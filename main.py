@@ -41,17 +41,15 @@ class Reception(HospitalStaff):
         except FileNotFoundError:
             pass
 
-    # def num_gen(self):
-    #     rand_num = str(randint(100, 5000))
-    #     def_len = 6
-    #     new_num = ((def_len - len(rand_num)) * "0") + rand_num
-    #     card_nums.append(new_num)
-    #     with open("file_numbers.txt", "a") as file:
-    #         file.write(f"{new_num}\n")
-    #     return new_num
-
     def create_card(self):
-        file_no = card_nums[-1]
+        rand_num = str(randint(100, 5000))
+        def_len = 6
+        file_no = ((def_len - len(rand_num)) * "0") + rand_num
+        
+        card_nums.append(new_num)
+        with open("file_numbers.txt", "a") as file:
+            file.write(f"{new_num}\n")
+               
         name = input("Enter patient's name: \n\n").upper()
         sex = input("Male or Female? \n\n").title()
         dob = input("\nEnter date of birth in the format: dd/mm/yyyy: \n\n")
@@ -79,6 +77,10 @@ class Reception(HospitalStaff):
             file.write(f"Age: {age} years\n")
             file.write(f"Address: {address}\n")
             file.write(f"Phone: {phone_number}\n")
+        
+        print(f"\nSuccesfully created file: {file_no}")
+
+        return file_no
 
     def vital_signs(self, card_no):
         file_path = os.path.join(self.folder, f"{card_no}.txt")
